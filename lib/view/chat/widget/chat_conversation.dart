@@ -1,0 +1,593 @@
+import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:project_1/components/profile_image.dart';
+import 'package:project_1/utils/app_color.dart';
+import 'package:project_1/utils/image_path.dart';
+import 'package:project_1/utils/space.dart';
+import 'package:project_1/view/chat/chatroom_icons/chatroom_actionicon.dart';
+import 'package:project_1/view/chat/chatroom_icons/chatroom_headericons.dart';
+import 'package:project_1/view/chat/conversation_list/conversation_list.dart';
+import 'package:project_1/view/chat/message_Bubble/custom_action.dart';
+import 'package:project_1/view/chat/message_Bubble/message_bubble.dart';
+import 'package:project_1/view/chat/sidebar/search_add.dart';
+import 'package:project_1/view/chat/sidebar/sidebar_item.dart';
+import 'package:project_1/view/chat/status_bar/statusbar_items.dart';
+
+class ChatConversation extends StatefulWidget {
+  @override
+  State<ChatConversation> createState() => _ChatConversationState();
+}
+
+class _ChatConversationState extends State<ChatConversation> {
+  TextEditingController MessageController = TextEditingController();
+  List addMessage = [];
+  bool ishover=false;
+  int selectedUser = 0;
+  int selectedStatus = 0;
+  int selcetdSidebarItem = 0;
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
+    return Scaffold(
+      body: Container(
+        color: Color.fromARGB(255, 57, 69, 86),
+        child: Center(
+          child: Row(
+            children: [
+              //Child 1  -- Side _bar
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Container(
+                    // width: 66,
+                    // height: 775,
+                    width: size.width * 0.045,
+                    height: size.height * 0.999,
+                    constraints: BoxConstraints(minWidth: 64),
+                    decoration: BoxDecoration(
+                      color: AppColor.transperent,
+                      border: BoxBorder.fromLTRB(),
+                    ),
+
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(3, 29, 3, 8),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          //For Profile_Image In Side Bar
+                          ProfileImage(image: ImagePath.ProfileImage),
+                          Space.h10,
+                          //Search Icon
+                          SearchAdd(icon: Icons.search),
+                          Space.h10,
+                          // Add Icon
+                          SearchAdd(icon: Icons.add),
+                          Space.h10,
+
+                          ///Messeger///
+                          InkWell(
+                            onTap: () {
+                              setState(() {
+                                selcetdSidebarItem = 1;
+                              });
+                            },
+                            child: SidebarItem(
+                              isFav: true,
+                              icon: FontAwesomeIcons.facebookMessenger,
+                              count: "100",
+                              text: "Messenger",
+                              isSelected: selcetdSidebarItem == 1,
+                            ),
+                          ),
+                          //Video Call
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 2;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.video_call_sharp,
+                                      count: "22",
+                                      text: "Meetings",
+                                      isSelected: selcetdSidebarItem == 2,
+                                    ),
+                                  ),
+
+                                  //Calender
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 3;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.calendar_month,
+                                      text: "Calenders",
+                                      isSelected: selcetdSidebarItem == 3,
+                                    ),
+                                  ),
+
+                                  // DocS
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 4;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.edit_document,
+                                      text: "Docs",
+                                      isSelected: selcetdSidebarItem == 4,
+                                    ),
+                                  ),
+                                  //Tasks
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 5;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.task,
+                                      count: "20",
+                                      text: "Tasks",
+                                      isSelected: selcetdSidebarItem == 5,
+                                    ),
+                                  ),
+
+                                  //Group 1
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 6;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: FontAwesomeIcons.peopleGroup,
+                                      isFav: true,
+                                      text: "Group 1",
+                                      isSelected: selcetdSidebarItem == 6,
+                                    ),
+                                  ),
+
+                                  //WorkPlace
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 7;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.workspaces_filled,
+                                      text: "Workplace",
+                                      isSelected: selcetdSidebarItem == 7,
+                                    ),
+                                  ),
+
+                                  //More _side bar
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 8;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.more,
+                                      text: "More",
+                                      isSelected: selcetdSidebarItem == 8,
+                                    ),
+                                  ),
+
+                                  Divider(
+                                    color: AppColor.grey.withOpacity(0.2),
+                                    endIndent: 17,
+                                    indent: 17,
+                                  ),
+
+                                  //Aproval
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 9;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.auto_graph_outlined,
+                                      text: "Approval",
+                                      isSelected: selcetdSidebarItem == 9,
+                                    ),
+                                  ),
+
+                                  //Settings..
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 10;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.settings,
+                                      text: "Settings",
+                                      isSelected: selcetdSidebarItem == 10,
+                                    ),
+                                  ),
+                                  Container(
+                                    height: 1,
+                                    width: 40,
+                                    color: AppColor.grey,
+                                  ),
+                                  //  download
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        selcetdSidebarItem = 11;
+                                      });
+                                    },
+                                    child: SidebarItem(
+                                      icon: Icons.download,
+                                      isSelected: selcetdSidebarItem == 11,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+
+              //Child 2   -- Chats
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+                child: Container(
+                  // width: 320,
+                  // height: 900,
+                  height: size.height * 0.99,
+                  width: size.width * 0.21,
+                  constraints: BoxConstraints(minWidth: 260),
+
+                  decoration: BoxDecoration(
+                    color: Color(0xff151515),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
+                    child: Column(
+                      children: [
+                        //Chats  First chaildren
+                        Row(
+                          children: [
+                            // Menu Icons
+                            Space.w10,
+                            Icon(Icons.menu, color: AppColor.white),
+                            Space.w5,
+                            // Chats
+                            Text(
+                              "Chats",
+                              style: TextStyle(
+                                color: AppColor.white,
+                                fontSize: 18,
+                              ),
+                            ),
+                          ],
+                        ),
+                        Space.h10,
+
+                        //2nd Children
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          child: SizedBox(
+                            height: 65,
+                            child: ListView.builder(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.horizontal,
+                              itemCount: 8,
+                              itemBuilder: (context, index) {
+                                return InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      selectedStatus = index;
+                                    });
+                                  },
+                                  child: StatusbarItems(
+                                    image: ImagePath.StatusImage,
+                                    text: "SmartLog",
+                                    isSelected: selectedStatus == index,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                        //3rd Children___----------______-------_________----------_______---------________--------
+                        Space.h10,
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: 18,
+                            itemBuilder: (context, index) {
+                              return InkWell(
+                                onTap: () {
+                                  setState(() {
+                                    selectedUser = index;
+                                  });
+                                },
+                                child: ConversationTile(
+                                  leadingImage: ImagePath.UserProfile,
+                                  title: "Task Assistant",
+                                  time: "9:25 AM",
+                                  subtitile:
+                                      "Abdul Wahab: @Arham Sarwar How Are You ",
+                                  trailingImage: "assets/9.jpg",
+                                  isSelected: selectedUser == index,
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+
+              //Child 3 ---Chat Screen Circle Up
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 10, 6, 10),
+                  child: Container(
+                    // height: size.height*0.99,
+                    // width: size.width*0.734,
+                    decoration: BoxDecoration(
+                      color: Color(0xff151515),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        //Chat Area Section _1_Header_Section
+                        ListTile(
+                          leading: ProfileImage(
+                            image: ImagePath.UserProfile,
+                            size: 20,
+                          ),
+                          title: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text(
+                                "CircleUp",
+                                style: TextStyle(color: AppColor.white),
+                              ),
+                              Space.w10,
+                              ChatroomActionicon(icon: Icons.people_outline),
+                              Space.w3,
+                              Text(
+                                "6",
+                                style: TextStyle(
+                                  color: AppColor.grey.withOpacity(0.6),
+                                  fontSize: 10,
+                                ),
+                              ),
+                            ],
+                          ),
+                          subtitle: Row(
+                            children: [
+                              ChatroomHeadericons(
+                                icon: Icons.message_rounded,
+                                Color: AppColor.green,
+                                text: "Chat",
+                                isSelected: true,
+                              ),
+
+                              Space.w3,
+                              ChatroomHeadericons(
+                                icon: Icons.folder,
+                                Color: AppColor.amber,
+                                text: "File",
+                              ),
+
+                              Space.w3,
+                              ChatroomHeadericons(
+                                icon: Icons.push_pin,
+                                Color: AppColor.green,
+                                text: "Pinned",
+                              ),
+
+                              Space.w3,
+
+                              ChatroomHeadericons(
+                                icon: Icons.add,
+                                text: "",
+                                Color: AppColor.white54,
+                              ),
+                            ],
+                          ),
+
+                          trailing: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              ChatroomActionicon(icon: Icons.manage_search),
+
+                              Space.w5,
+                              ChatroomActionicon(
+                                icon: Icons.video_call_outlined,
+                              ),
+
+                              Space.w5,
+                              ChatroomActionicon(
+                                icon: Icons.person_add_alt_1_outlined,
+                              ),
+
+                              Space.w5,
+                              ChatroomActionicon(
+                                icon: Icons.calendar_today_outlined,
+                              ),
+
+                              Space.w5,
+                              ChatroomActionicon(icon: Icons.more_horiz_sharp),
+                            ],
+                          ),
+                        ),
+
+                        // Divider(color: AppColor.grey.withOpacity(0.2),endIndent: 17,indent: 17,),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
+                          child: Container(
+                            height: 0.5,
+                            color: AppColor.grey.withOpacity(0.4),
+                          ),
+                        ),
+
+                        //Chat Area Section _2
+
+                        //  Chat_Room
+                        Expanded(
+                          child: ListView.builder(
+                            itemCount: addMessage.length,
+                            itemBuilder: (context, index) {
+                              return message_Bubble(message: addMessage[index],
+                              image: AssetImage("assets/7.jpg"),
+                              name: "Zeeshan",
+                              date: "yesterday",
+                              time: "9:23 AM",
+                             
+                              custom_action: CustomAction(),
+                              );
+                            },
+                          ),
+                        ),
+                        // Input_Feild
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+                          child: TextField(
+                            onSubmitted: (value) {
+                              setState(() {
+                                addMessage.add(MessageController.text);
+                                MessageController.clear();
+                              });
+                            },
+                            controller: MessageController,
+                            style: TextStyle(color: AppColor.grey),
+                            decoration: InputDecoration(
+                              fillColor: AppColor.red,
+                              hint: Text(
+                                "Message CirleUp",
+                                style: TextStyle(color: AppColor.grey),
+                              ),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+
+                              suffixIcon: Row(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Text(
+                                    "Aa",
+                                    style: TextStyle(
+                                      color: AppColor.grey,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                  Space.w10,
+                                  ChatroomActionicon(
+                                    icon: Icons.emoji_emotions_outlined,
+                                    size: 18,
+                                  ),
+
+                                  Space.w10,
+                                  ChatroomActionicon(
+                                    icon: Icons.alternate_email,
+                                    size: 18,
+                                  ),
+
+                                  Space.w10,
+
+                                  SizedBox(
+                                    width: 26,
+                                    child: Stack(
+                                      children: [
+                                        Transform.rotate(
+                                          angle: -3.1415926535 / 2,
+                                          child: ChatroomActionicon(
+                                            icon: Icons.cut,
+                                            size: 18,
+                                          ),
+                                        ),
+                                        Positioned(
+                                          right: -1,
+                                          bottom: 2,
+
+                                          child: ChatroomActionicon(
+                                            icon: Icons.keyboard_arrow_down,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Space.w10,
+                                  ChatroomActionicon(
+                                    icon: Icons.add_circle_outline_rounded,
+                                    size: 18,
+                                  ),
+
+                                  Space.w10,
+                                  ChatroomActionicon(
+                                    icon: Icons.open_in_full,
+                                    size: 18,
+                                  ),
+                                  Space.w10,
+                                  InkWell(
+                                    onTap: () {
+                                      setState(() {
+                                        addMessage.add(MessageController.text);
+                                        MessageController.clear();
+                                      });
+                                    },
+                                    child: ChatroomActionicon(
+                                      Color: AppColor.grey.withOpacity(0.4),
+                                      icon: Icons.send,
+                                      size: 22,
+                                    ),
+                                  ),
+                                  Space.w10,
+                                  Container(
+                                    height: 12,
+                                    width: 0.3,
+                                    color: AppColor.grey,
+                                  ),
+                                  Space.w5,
+                                  ChatroomActionicon(
+                                    icon: Icons.keyboard_arrow_down,
+                                    size: 18,
+                                  ),
+                                  Space.w15,
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        //Chat area Column end bracket
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
