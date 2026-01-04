@@ -6,10 +6,11 @@ class AppColor {
   static const white = Colors.white;
   static const white54 = Color.fromRGBO(255, 255, 255, 0.541);
   static const transperent=Colors.transparent;
-  static const blue = Colors.blue;
+  static const blue = Color.fromARGB(255, 0, 140, 255);
   static const red = Colors.red;
-  static const green = Color.fromARGB(255, 59, 142, 184);
+  static const green = Color(0xff1fa18f);
   static const amber = Colors.amber;
-  static const blueAccent = Colors.blueAccent;
+  static const blueAccent = Color(0xff133063);
   static const deepOrangeAccent = Colors.deepOrangeAccent;
+  static const darkNavyBlue = Color(0xFF202C44);
 }

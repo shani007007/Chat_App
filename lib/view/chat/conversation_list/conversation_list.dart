@@ -24,7 +24,7 @@ class ConversationTile extends StatelessWidget {
         Container(
           padding: EdgeInsets.fromLTRB(3, 4, 3, 3),
           decoration: BoxDecoration(
-            color:isSelected? AppColor.blueAccent.withOpacity(0.2):AppColor.transperent,
+            color:isSelected? AppColor.darkNavyBlue:AppColor.transperent,
             borderRadius: BorderRadius.circular(6)
             ),
           child: Row(

@@ -7,11 +7,11 @@ import 'package:project_1/utils/space.dart';
 import 'package:project_1/view/chat/chatroom_icons/chatroom_actionicon.dart';
 import 'package:project_1/view/chat/chatroom_icons/chatroom_headericons.dart';
 import 'package:project_1/view/chat/conversation_list/conversation_list.dart';
-import 'package:project_1/view/chat/message_Bubble/custom_action.dart';
-import 'package:project_1/view/chat/message_Bubble/message_bubble.dart';
+import 'package:project_1/view/chat/chat_room/custom_action.dart';
+import 'package:project_1/view/chat/chat_room/message_bubble.dart';
 import 'package:project_1/view/chat/sidebar/search_add.dart';
 import 'package:project_1/view/chat/sidebar/sidebar_item.dart';
-import 'package:project_1/view/chat/status_bar/statusbar_items.dart';
+import 'package:project_1/view/chat/conversation_list/statusbar_items.dart';
 
 class ChatConversation extends StatefulWidget {
   @override
@@ -19,9 +19,10 @@ class ChatConversation extends StatefulWidget {
 }
 
 class _ChatConversationState extends State<ChatConversation> {
+
+  List<bool> ishover=[];
   TextEditingController MessageController = TextEditingController();
   List addMessage = [];
-  bool ishover=false;
   int selectedUser = 0;
   int selectedStatus = 0;
   int selcetdSidebarItem = 0;
@@ -30,7 +31,7 @@ class _ChatConversationState extends State<ChatConversation> {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: Container(
-        color: Color.fromARGB(255, 57, 69, 86),
+        color: AppColor.lightBlue,
         child: Center(
           child: Row(
             children: [
@@ -41,7 +42,7 @@ class _ChatConversationState extends State<ChatConversation> {
                   Container(
                     // width: 66,
                     // height: 775,
-                    width: size.width * 0.045,
+                    width: size.width * 0.0445,
                     height: size.height * 0.999,
                     constraints: BoxConstraints(minWidth: 64),
                     decoration: BoxDecoration(
@@ -247,17 +248,18 @@ class _ChatConversationState extends State<ChatConversation> {
 
               //Child 2   -- Chats
               Padding(
-                padding: const EdgeInsets.fromLTRB(0, 10, 10, 10),
+                padding: const EdgeInsets.fromLTRB(0, 28, 7, 7),
                 child: Container(
+                  padding: EdgeInsets.symmetric(horizontal: 3),
                   // width: 320,
                   // height: 900,
                   height: size.height * 0.99,
-                  width: size.width * 0.21,
+                  width: size.width * 0.207,
                   constraints: BoxConstraints(minWidth: 260),
 
                   decoration: BoxDecoration(
                     color: Color(0xff151515),
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(6),
                   ),
 
                   child: Padding(
@@ -285,7 +287,7 @@ class _ChatConversationState extends State<ChatConversation> {
 
                         //2nd Children
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(8, 0, 8, 0),
+                          padding: const EdgeInsets.fromLTRB(0, 0, 0, 0),
                           child: SizedBox(
                             height: 65,
                             child: ListView.builder(
@@ -340,19 +342,19 @@ class _ChatConversationState extends State<ChatConversation> {
                 ),
               ),
 
-              //Child 3 ---Chat Screen Circle Up
+              //Child 3 ---Chat Room 
               Expanded(
                 child: Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 10, 6, 10),
+                  padding: const EdgeInsets.fromLTRB(0, 28, 6, 7),
                   child: Container(
                     // height: size.height*0.99,
                     // width: size.width*0.734,
                     decoration: BoxDecoration(
                       color: Color(0xff151515),
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(6),
                     ),
 
-                    child: Column(
+                    child: Column(mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -370,7 +372,7 @@ class _ChatConversationState extends State<ChatConversation> {
                                 style: TextStyle(color: AppColor.white),
                               ),
                               Space.w10,
-                              ChatroomActionicon(icon: Icons.people_outline),
+                              ChatroomActionicon(icon: Icons.people_outline,size: 12,),
                               Space.w3,
                               Text(
                                 "6",
@@ -381,37 +383,40 @@ class _ChatConversationState extends State<ChatConversation> {
                               ),
                             ],
                           ),
-                          subtitle: Row(
-                            children: [
-                              ChatroomHeadericons(
-                                icon: Icons.message_rounded,
-                                Color: AppColor.green,
-                                text: "Chat",
-                                isSelected: true,
-                              ),
-
-                              Space.w3,
-                              ChatroomHeadericons(
-                                icon: Icons.folder,
-                                Color: AppColor.amber,
-                                text: "File",
-                              ),
-
-                              Space.w3,
-                              ChatroomHeadericons(
-                                icon: Icons.push_pin,
-                                Color: AppColor.green,
-                                text: "Pinned",
-                              ),
-
-                              Space.w3,
-
-                              ChatroomHeadericons(
-                                icon: Icons.add,
-                                text: "",
-                                Color: AppColor.white54,
-                              ),
-                            ],
+                          subtitle: Padding(
+                            padding: const EdgeInsets.only(top: 5),
+                            child: Row(
+                              children: [
+                                ChatroomHeadericons(
+                                  icon: Icons.message_rounded,
+                                  Color: AppColor.green,
+                                  text: "Chat",
+                                  isSelected: true,
+                                ),
+                            
+                                Space.w3,
+                                ChatroomHeadericons(
+                                  icon: Icons.folder,
+                                  Color: AppColor.amber,
+                                  text: "File",
+                                ),
+                            
+                                Space.w3,
+                                ChatroomHeadericons(
+                                  icon: Icons.push_pin,
+                                  Color: AppColor.green,
+                                  text: "Pinned",
+                                ),
+                            
+                                Space.w3,
+                            
+                                ChatroomHeadericons(
+                                  icon: Icons.add,
+                                  text: "",
+                                  Color: AppColor.white54,
+                                ),
+                              ],
+                            ),
                           ),
 
                           trailing: Row(
@@ -456,37 +461,60 @@ class _ChatConversationState extends State<ChatConversation> {
                           child: ListView.builder(
                             itemCount: addMessage.length,
                             itemBuilder: (context, index) {
-                              return message_Bubble(message: addMessage[index],
-                              image: AssetImage("assets/7.jpg"),
-                              name: "Zeeshan",
-                              date: "yesterday",
-                              time: "9:23 AM",
-                             
-                              custom_action: CustomAction(),
+                              return MouseRegion(
+                                onEnter: (event) {
+                                  setState(() {
+                                    ishover[index]=true;
+                                  });
+                                },
+                                onExit: (event) {
+                                  setState(() {
+                                    ishover[index]=false;
+                                  });
+                                },
+                                child: message_Bubble(message: addMessage[index],
+                                image: AssetImage("assets/7.jpg"),
+                                name: "Zeeshan",
+                                date:ishover[index]? "yesterday":"",
+                                time:ishover[index]? "9:23 AM":"",
+                                                             
+                                custom_action:ishover[index]? CustomAction():SizedBox.shrink(),
+                                ),
                               );
                             },
                           ),
                         ),
                         // Input_Feild
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
-                          child: TextField(
+                          padding: const EdgeInsets.fromLTRB(20, 0, 20, 21),
+                          child: TextField(cursorColor: AppColor.grey,
                             onSubmitted: (value) {
                               setState(() {
                                 addMessage.add(MessageController.text);
+                                ishover.add(false);
                                 MessageController.clear();
                               });
                             },
                             controller: MessageController,
                             style: TextStyle(color: AppColor.grey),
                             decoration: InputDecoration(
-                              fillColor: AppColor.red,
+                              fillColor: AppColor.grey,
                               hint: Text(
                                 "Message CirleUp",
                                 style: TextStyle(color: AppColor.grey),
                               ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(color: AppColor.grey,width: 0.2)
+                                
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(5),
+                                borderSide: BorderSide(color: AppColor.grey, )
+                                
                               ),
 
                               suffixIcon: Row(
@@ -496,19 +524,19 @@ class _ChatConversationState extends State<ChatConversation> {
                                     "Aa",
                                     style: TextStyle(
                                       color: AppColor.grey,
-                                      fontSize: 18,
+fontSize: 18
                                     ),
                                   ),
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.emoji_emotions_outlined,
-                                    size: 18,
+
                                   ),
 
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.alternate_email,
-                                    size: 18,
+
                                   ),
 
                                   Space.w10,
@@ -521,15 +549,16 @@ class _ChatConversationState extends State<ChatConversation> {
                                           angle: -3.1415926535 / 2,
                                           child: ChatroomActionicon(
                                             icon: Icons.cut,
-                                            size: 18,
+                             
                                           ),
                                         ),
                                         Positioned(
-                                          right: -1,
-                                          bottom: 2,
+                                          right: -4,
+                                          bottom: 3,
 
                                           child: ChatroomActionicon(
                                             icon: Icons.keyboard_arrow_down,
+                                            size: 13,
                                           ),
                                         ),
                                       ],
@@ -538,19 +567,20 @@ class _ChatConversationState extends State<ChatConversation> {
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.add_circle_outline_rounded,
-                                    size: 18,
+
                                   ),
 
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.open_in_full,
-                                    size: 18,
+
                                   ),
                                   Space.w10,
                                   InkWell(
                                     onTap: () {
                                       setState(() {
                                         addMessage.add(MessageController.text);
+                                        ishover.add(false);
                                         MessageController.clear();
                                       });
                                     },
@@ -560,16 +590,15 @@ class _ChatConversationState extends State<ChatConversation> {
                                       size: 22,
                                     ),
                                   ),
-                                  Space.w10,
+                                  Space.w5,
                                   Container(
-                                    height: 12,
-                                    width: 0.3,
+
+                                    width: 0.5,
                                     color: AppColor.grey,
                                   ),
                                   Space.w5,
                                   ChatroomActionicon(
                                     icon: Icons.keyboard_arrow_down,
-                                    size: 18,
                                   ),
                                   Space.w15,
                                 ],

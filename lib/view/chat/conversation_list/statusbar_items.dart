@@ -24,7 +24,7 @@ class StatusbarItems extends StatelessWidget {
           padding: EdgeInsets.fromLTRB(0, 3, 0, 0),
           decoration: BoxDecoration(
             color: isSelected
-                ? AppColor.blue.withOpacity(0.2)
+                ? AppColor.darkNavyBlue
                 : AppColor.transperent,
             borderRadius: BorderRadius.circular(6),
           ),

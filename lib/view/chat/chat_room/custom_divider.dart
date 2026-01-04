@@ -5,7 +5,7 @@ class CustomDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(width: 0.6, color: AppColor.grey.withOpacity(0.2,)
+    return Container(width: 0.9, color: AppColor.grey.withOpacity(0.2,)
     );
   }
 }

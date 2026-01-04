@@ -10,18 +10,18 @@ class ChatroomHeadericons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-        color:!isSelected?AppColor.transperent: AppColor.blueAccent.withOpacity(0.2),
+        color:!isSelected?AppColor.transperent: AppColor.blueAccent.withOpacity(0.8),
         borderRadius: BorderRadius.circular(6),
       ),
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(7, 5, 7, 5),
+        padding: const EdgeInsets.symmetric(vertical: 3.8,horizontal: 6.5),
         child: Row(
           children: [
-            Icon(icon, size:12, color:!isSelected? Color:AppColor.blue),
+            Icon(icon, size:14, color:!isSelected? Color:AppColor.blue),
             Space.w3,
             Text(
               text,
-              style: TextStyle(fontSize: 10, color:!isSelected? AppColor.grey:AppColor.blueAccent),
+              style: TextStyle(fontSize: 12, color:!isSelected? AppColor.grey:AppColor.blue),
             ),
           ],
         ),
