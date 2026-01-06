@@ -475,7 +475,7 @@ class _ChatConversationState extends State<ChatConversation> {
                                 child: message_Bubble(message: addMessage[index],
                                 image: AssetImage("assets/7.jpg"),
                                 name: "Zeeshan",
-                                date:ishover[index]? "yesterday":"",
+                                date:ishover[index]? "Yesterday":"",
                                 time:ishover[index]? "9:23 AM":"",
                                                              
                                 custom_action:ishover[index]? CustomAction():SizedBox.shrink(),
