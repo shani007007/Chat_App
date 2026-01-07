@@ -592,11 +592,10 @@ fontSize: 18
                                   ),
                                   Space.w5,
                                   Container(
-
+                                    height: 20,
                                     width: 0.5,
                                     color: AppColor.grey,
                                   ),
-                                  Space.w5,
                                   ChatroomActionicon(
                                     icon: Icons.keyboard_arrow_down,
                                   ),

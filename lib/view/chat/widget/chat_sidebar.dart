@@ -18,8 +18,7 @@ class ChatSidebar extends StatefulWidget {
 }
 
 class _ChatSidebarState extends State<ChatSidebar> {
-
-  List<bool> ishover=[];
+  List<bool> ishover = [];
   TextEditingController MessageController = TextEditingController();
   List addMessage = [];
   int selcetdSidebarItem = 0;
@@ -242,7 +241,7 @@ class _ChatSidebarState extends State<ChatSidebar> {
                   ),
                 ],
               ),
-              //Child 3 ---Chat Room 
+              //Child 3 ---Chat Room
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(0, 28, 6, 7),
@@ -254,7 +253,8 @@ class _ChatSidebarState extends State<ChatSidebar> {
                       borderRadius: BorderRadius.circular(6),
                     ),
 
-                    child: Column(mainAxisSize: MainAxisSize.min,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
@@ -272,7 +272,10 @@ class _ChatSidebarState extends State<ChatSidebar> {
                                 style: TextStyle(color: AppColor.white),
                               ),
                               Space.w10,
-                              ChatroomActionicon(icon: Icons.people_outline,size: 12,),
+                              ChatroomActionicon(
+                                icon: Icons.people_outline,
+                                size: 12,
+                              ),
                               Space.w3,
                               Text(
                                 "6",
@@ -293,23 +296,23 @@ class _ChatSidebarState extends State<ChatSidebar> {
                                   text: "Chat",
                                   isSelected: true,
                                 ),
-                            
+
                                 Space.w3,
                                 ChatroomHeadericons(
                                   icon: Icons.folder,
                                   Color: AppColor.amber,
                                   text: "File",
                                 ),
-                            
+
                                 Space.w3,
                                 ChatroomHeadericons(
                                   icon: Icons.push_pin,
                                   Color: AppColor.green,
                                   text: "Pinned",
                                 ),
-                            
+
                                 Space.w3,
-                            
+
                                 ChatroomHeadericons(
                                   icon: Icons.add,
                                   text: "",
@@ -364,21 +367,24 @@ class _ChatSidebarState extends State<ChatSidebar> {
                               return MouseRegion(
                                 onEnter: (event) {
                                   setState(() {
-                                    ishover[index]=true;
+                                    ishover[index] = true;
                                   });
                                 },
                                 onExit: (event) {
                                   setState(() {
-                                    ishover[index]=false;
+                                    ishover[index] = false;
                                   });
                                 },
-                                child: message_Bubble(message: addMessage[index],
-                                image: AssetImage("assets/7.jpg"),
-                                name: "Zeeshan",
-                                date:ishover[index]? "Yesterday":"",
-                                time:ishover[index]? "9:23 AM":"",
-                                                             
-                                custom_action:ishover[index]? CustomAction():SizedBox.shrink(),
+                                child: message_Bubble(
+                                  message: addMessage[index],
+                                  image: AssetImage("assets/7.jpg"),
+                                  name: "Zeeshan",
+                                  date: ishover[index] ? "Yesterday" : "",
+                                  time: ishover[index] ? "9:23 AM" : "",
+
+                                  custom_action: ishover[index]
+                                      ? CustomAction()
+                                      : SizedBox.shrink(),
                                 ),
                               );
                             },
@@ -387,7 +393,8 @@ class _ChatSidebarState extends State<ChatSidebar> {
                         // Input_Feild
                         Padding(
                           padding: const EdgeInsets.fromLTRB(20, 0, 20, 21),
-                          child: TextField(cursorColor: AppColor.grey,
+                          child: TextField(
+                            cursorColor: AppColor.grey,
                             onSubmitted: (value) {
                               setState(() {
                                 addMessage.add(MessageController.text);
@@ -408,13 +415,14 @@ class _ChatSidebarState extends State<ChatSidebar> {
                               ),
                               enabledBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(color: AppColor.grey,width: 0.2)
-                                
+                                borderSide: BorderSide(
+                                  color: AppColor.grey,
+                                  width: 0.2,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5),
-                                borderSide: BorderSide(color: AppColor.grey, )
-                                
+                                borderSide: BorderSide(color: AppColor.grey),
                               ),
 
                               suffixIcon: Row(
@@ -424,19 +432,17 @@ class _ChatSidebarState extends State<ChatSidebar> {
                                     "Aa",
                                     style: TextStyle(
                                       color: AppColor.grey,
-fontSize: 18
+                                      fontSize: 18,
                                     ),
                                   ),
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.emoji_emotions_outlined,
-
                                   ),
 
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.alternate_email,
-
                                   ),
 
                                   Space.w10,
@@ -449,7 +455,6 @@ fontSize: 18
                                           angle: -3.1415926535 / 2,
                                           child: ChatroomActionicon(
                                             icon: Icons.cut,
-                             
                                           ),
                                         ),
                                         Positioned(
@@ -467,14 +472,10 @@ fontSize: 18
                                   Space.w10,
                                   ChatroomActionicon(
                                     icon: Icons.add_circle_outline_rounded,
-
                                   ),
 
                                   Space.w10,
-                                  ChatroomActionicon(
-                                    icon: Icons.open_in_full,
-
-                                  ),
+                                  ChatroomActionicon(icon: Icons.open_in_full),
                                   Space.w10,
                                   InkWell(
                                     onTap: () {
@@ -492,11 +493,10 @@ fontSize: 18
                                   ),
                                   Space.w5,
                                   Container(
-
+                                    height: 20,
                                     width: 0.5,
                                     color: AppColor.grey,
                                   ),
-                                  Space.w5,
                                   ChatroomActionicon(
                                     icon: Icons.keyboard_arrow_down,
                                   ),
