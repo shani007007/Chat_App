@@ -13,4 +13,5 @@ class AppColor {
   static const blueAccent = Color(0xff133063);
   static const deepOrangeAccent = Colors.deepOrangeAccent;
   static const darkNavyBlue = Color(0xFF202C44);
+  static const royalBlue=Color(0xff1455ec);
 }

@@ -476,31 +476,72 @@ class _ChatSidebarState extends State<ChatSidebar> {
 
                                   Space.w10,
                                   ChatroomActionicon(icon: Icons.open_in_full),
+
                                   Space.w10,
-                                  InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        addMessage.add(MessageController.text);
-                                        ishover.add(false);
-                                        MessageController.clear();
-                                      });
-                                    },
-                                    child: ChatroomActionicon(
-                                      Color: AppColor.grey.withOpacity(0.4),
-                                      icon: Icons.send,
-                                      size: 22,
+                                  Container(
+                                    height: 26,
+                                    width: 57,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(6),
+                                      color: MessageController.text.isNotEmpty
+                                          ? AppColor.blue.withOpacity(0.2)
+                                          : AppColor.transperent,
+                                    ),
+                                    child: Center(
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.center,
+                                        children: [
+                                          SizedBox(width: 7),
+                                          InkWell(
+                                            onTap: () {
+                                              setState(() {
+                                                addMessage.add(
+                                                  MessageController.text,
+                                                );
+                                                ishover.add(false);
+                                                MessageController.clear();
+                                              });
+                                            },
+                                            child: ChatroomActionicon(
+                                              Color:
+                                                  MessageController
+                                                      .text
+                                                      .isNotEmpty
+                                                  ? AppColor.royalBlue
+                                                  : AppColor.grey.withOpacity(
+                                                      0.4,
+                                                    ),
+                                              icon: Icons.send,
+                                            ),
+                                          ),
+                                          SizedBox(width: 5),
+                                          Container(
+                                            height: 16,
+                                            width: 0.8,
+                                            color: AppColor.grey.withOpacity(
+                                              0.4,
+                                            ),
+                                          ),
+                                          Space.w5,
+                                          ChatroomActionicon(
+                                            Color:
+                                                MessageController
+                                                    .text
+                                                    .isNotEmpty
+                                                ? AppColor.blue
+                                                : AppColor.grey.withOpacity(
+                                                    0.4,
+                                                  ),
+                                            size: 12,
+                                            icon: Icons.keyboard_arrow_down,
+                                          ),
+                                          Space.w5,
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                  Space.w5,
-                                  Container(
-                                    height: 20,
-                                    width: 0.5,
-                                    color: AppColor.grey,
-                                  ),
-                                  ChatroomActionicon(
-                                    icon: Icons.keyboard_arrow_down,
-                                  ),
-                                  Space.w15,
+                                  Space.w10,
                                 ],
                               ),
                             ),
