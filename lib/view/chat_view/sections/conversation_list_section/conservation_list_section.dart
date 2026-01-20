@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/utils/image_path.dart';
 import 'package:project_1/utils/space.dart';
-import 'package:project_1/view/chat_view/sections/conversation_list_section/widgets/conversation_list.dart';
+import 'package:project_1/view/chat_view/sections/conversation_list_section/widgets/conversation_list_tile.dart';
 import 'package:project_1/view/chat_view/sections/conversation_list_section/widgets/statusbar_items.dart';
 class ConservationListSection extends StatefulWidget {
   const ConservationListSection({super.key});
@@ -93,7 +93,7 @@ class _ConservationListSectionState extends State<ConservationListSection> {
                                     selectedUser = index;
                                   });
                                 },
-                                child: ConversationTile(
+                                child: ConversationListTile(
                                   leadingImage: ImagePath.UserProfile,
                                   title: "Task Assistant",
                                   time: "9:25 AM",

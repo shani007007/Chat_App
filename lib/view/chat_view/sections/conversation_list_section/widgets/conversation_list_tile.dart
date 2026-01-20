@@ -4,10 +4,10 @@ import 'package:project_1/components/profile_image.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/utils/space.dart';
 
-class ConversationTile extends StatelessWidget {
+class ConversationListTile extends StatelessWidget {
   final leadingImage, title, time, subtitile, trailingImage,isSelected;
   String? count;
-  ConversationTile({
+  ConversationListTile({
     required this.leadingImage,
     this.title,
     this.subtitile,

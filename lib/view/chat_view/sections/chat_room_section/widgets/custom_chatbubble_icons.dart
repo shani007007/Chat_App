@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/custom_divider.dart';
 
-class CustomChatbubbleIcon extends StatelessWidget {
-  const CustomChatbubbleIcon({super.key});
+class CustomChatbubbleIcons extends StatelessWidget {
+  const CustomChatbubbleIcons({super.key});
 
   @override
   Widget build(BuildContext context) {

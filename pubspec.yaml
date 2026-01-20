@@ -4,7 +4,7 @@ description: "A new Flutter project."
 version: 1.0.0+1
 
 environment:
-  sdk: ^3.9.2
+  sdk: ^2.17.0
 
 dependencies:
   flutter:
@@ -14,13 +14,13 @@ dependencies:
   font_awesome_flutter: ^10.12.0
   auto_size_text: ^3.0.0
   provider: ^6.1.5+1
+  carousel_slider: ^5.1.1
+  flutter_lints: ^2.0.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-
-  flutter_lints: ^5.0.0
 
 
 flutter:
@@ -29,23 +29,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/maximize.png
-    - assets/send message.png
-    - assets/current.png
-    - assets/5.jpg
-    - assets/4.jpg
-    - assets/3.jpg
-    - assets/2.jpg
-    - assets/1.jpg
-    - assets/6.jpg
-    - assets/7.jpg
-    - assets/8.jpg
-    - assets/9.jpg
-    - assets/10.jpg
-    - assets/11.jpg
-    - assets/12.jpg
-    - assets/13.jpg
-    - assets/cut.png
+    - assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

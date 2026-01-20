@@ -3,9 +3,9 @@ import 'package:project_1/components/profile_image.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/utils/image_path.dart';
 import 'package:project_1/utils/space.dart';
-import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/chatroom_custom_icon.dart';
+import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/chatroom_custom_icons.dart';
 import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/chatroom_header_icons.dart';
-import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/custom_chatbubble_icon.dart';
+import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/custom_chatbubble_icons.dart';
 import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/message_bubble.dart';
 class ChatroomSection extends StatefulWidget {
   const ChatroomSection({super.key});
@@ -51,7 +51,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                 style: TextStyle(color: AppColor.white),
                               ),
                               Space.w10,
-                              ChatroomCustomIcon(
+                              ChatroomCustomIcons(
                                 icon: Icons.people_outline,
                                 size: 12,
                               ),
@@ -104,25 +104,25 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                           trailing: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              ChatroomCustomIcon(icon: Icons.manage_search),
+                              ChatroomCustomIcons(icon: Icons.manage_search),
 
                               Space.w10,
-                              ChatroomCustomIcon(
+                              ChatroomCustomIcons(
                                 icon: Icons.video_call_outlined,
                               ),
 
                               Space.w10,
-                              ChatroomCustomIcon(
+                              ChatroomCustomIcons(
                                 icon: Icons.person_add_alt_1_outlined,
                               ),
 
                               Space.w10,
-                              ChatroomCustomIcon(
+                              ChatroomCustomIcons(
                                 icon: Icons.calendar_today_outlined,
                               ),
 
                               Space.w10,
-                              ChatroomCustomIcon(icon: Icons.more_horiz_sharp),
+                              ChatroomCustomIcons(icon: Icons.more_horiz_sharp),
                             ],
                           ),
                         ),
@@ -154,7 +154,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                     ishover[index] = false;
                                   });
                                 },
-                                child: message_Bubble(
+                                child: MessageBubble(
                                   message: addMessage[index],
                                   image: AssetImage(ImagePath.ProfileImage),
                                   name: "Zeeshan",
@@ -162,7 +162,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                   time: ishover[index] ? "9:23 AM" : "",
 
                                   custom_action: ishover[index]
-                                      ? CustomChatbubbleIcon()
+                                      ? CustomChatbubbleIcons()
                                       : SizedBox.shrink(),
                                 ),
                               );
@@ -218,12 +218,12 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                     ),
                                   ),
                                   Space.w10,
-                                  ChatroomCustomIcon(
+                                  ChatroomCustomIcons(
                                     icon: Icons.emoji_emotions_outlined,
                                   ),
 
                                   Space.w10,
-                                  ChatroomCustomIcon(
+                                  ChatroomCustomIcons(
                                     icon: Icons.alternate_email,
                                   ),
 
@@ -235,7 +235,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                       children: [
                                         Transform.rotate(
                                           angle: -3.1415926535 / 2,
-                                          child: ChatroomCustomIcon(
+                                          child: ChatroomCustomIcons(
                                             icon: Icons.cut,
                                           ),
                                         ),
@@ -243,7 +243,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                           right: -4,
                                           bottom: 3,
 
-                                          child: ChatroomCustomIcon(
+                                          child: ChatroomCustomIcons(
                                             icon: Icons.keyboard_arrow_down,
                                             size: 13,
                                           ),
@@ -252,12 +252,12 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                     ),
                                   ),
                                   Space.w10,
-                                  ChatroomCustomIcon(
+                                  ChatroomCustomIcons(
                                     icon: Icons.add_circle_outline_rounded,
                                   ),
 
                                   Space.w10,
-                                  ChatroomCustomIcon(icon: Icons.open_in_full),
+                                  ChatroomCustomIcons(icon: Icons.open_in_full),
                                   Space.w10,
                                   Container(
                                     height: 26,
@@ -284,7 +284,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                                 MessageController.clear();
                                               });
                                             },
-                                            child: ChatroomCustomIcon(
+                                            child: ChatroomCustomIcons(
                                               Color:
                                                   MessageController
                                                       .text
@@ -305,7 +305,7 @@ class _ChatroomSectionState extends State<ChatroomSection> {
                                             ),
                                           ),
                                           Space.w5,
-                                          ChatroomCustomIcon(
+                                          ChatroomCustomIcons(
                                             Color:
                                                 MessageController
                                                     .text

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/utils/space.dart';
-import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/custom_chatbubble_icon.dart';
+import 'package:project_1/view/chat_view/sections/chat_room_section/widgets/custom_chatbubble_icons.dart';
 
-class message_Bubble extends StatelessWidget {
+class MessageBubble extends StatelessWidget {
   final message, image, name, date, time, bubble_color, custom_action;
-  message_Bubble({
+  MessageBubble({
     this.message,
     this.image,
     this.name,
