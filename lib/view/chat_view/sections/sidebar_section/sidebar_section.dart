@@ -1,23 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:project_1/components/profile_image.dart';
+import 'package:project_1/controller/provider/sidebar_section_provider.dart';
 import 'package:project_1/utils/app_color.dart';
 import 'package:project_1/utils/image_path.dart';
 import 'package:project_1/utils/space.dart';
 import 'package:project_1/view/chat_view/sections/sidebar_section/widgets/search_add.dart';
 import 'package:project_1/view/chat_view/sections/sidebar_section/widgets/sidebar_item.dart';
-class SidebarSection extends StatefulWidget {
+import 'package:provider/provider.dart';
+class SidebarSection extends StatelessWidget {
   const SidebarSection({super.key});
 
-  @override
-  State<SidebarSection> createState() => _SidebarSectionState();
-}
-
-class _SidebarSectionState extends State<SidebarSection> {
-  
-  int selcetdSidebarItem = 0;
+  // int selcetdSidebarItem = 0;
   @override
   Widget build(BuildContext context) {
+    var providerWatch = context.watch<SidebarSectionProvider>();
+    var providerRead = context.read<SidebarSectionProvider>();
+
     Size size = MediaQuery.of(context).size;
     return     Column(
                 mainAxisAlignment: MainAxisAlignment.start,
@@ -51,17 +50,13 @@ class _SidebarSectionState extends State<SidebarSection> {
 
                           ///Messeger///
                           InkWell(
-                            onTap: () {
-                              setState(() {
-                                selcetdSidebarItem = 1;
-                              });
-                            },
+                            onTap: () =>providerRead.upDateSelcetdSidebarItem(1),
                             child: SidebarItem(
                               isFav: true,
                               icon: FontAwesomeIcons.facebookMessenger,
                               count: "100",
                               text: "Messenger",
-                              isSelected: selcetdSidebarItem == 1,
+                              isSelected: providerRead.selcetdSidebarItem == 1,
                             ),
                           ),
                           //Video Call
@@ -70,101 +65,73 @@ class _SidebarSectionState extends State<SidebarSection> {
                               child: Column(
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 2;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(2),
                                     child: SidebarItem(
                                       icon: Icons.video_call_sharp,
                                       count: "22",
                                       text: "Meetings",
-                                      isSelected: selcetdSidebarItem == 2,
+                                      isSelected: providerRead.selcetdSidebarItem == 2,
                                     ),
                                   ),
 
                                   //Calender
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 3;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(3),
                                     child: SidebarItem(
                                       icon: Icons.calendar_month,
                                       text: "Calenders",
-                                      isSelected: selcetdSidebarItem == 3,
+                                      isSelected: providerRead.selcetdSidebarItem == 3,
                                     ),
                                   ),
 
                                   // DocS
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 4;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(4),
                                     child: SidebarItem(
                                       icon: Icons.edit_document,
                                       text: "Docs",
-                                      isSelected: selcetdSidebarItem == 4,
+                                      isSelected: providerRead.selcetdSidebarItem == 4,
                                     ),
                                   ),
                                   //Tasks
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 5;
-                                      });
-                                    },
+                                    onTap: () =>providerRead.upDateSelcetdSidebarItem(5),
                                     child: SidebarItem(
                                       icon: Icons.task,
                                       count: "20",
                                       text: "Tasks",
-                                      isSelected: selcetdSidebarItem == 5,
+                                      isSelected: providerRead.selcetdSidebarItem == 5,
                                     ),
                                   ),
 
                                   //Group 1
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 6;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(6),
                                     child: SidebarItem(
                                       icon: FontAwesomeIcons.peopleGroup,
                                       isFav: true,
                                       text: "Group 1",
-                                      isSelected: selcetdSidebarItem == 6,
+                                      isSelected: providerRead.selcetdSidebarItem == 6,
                                     ),
                                   ),
 
                                   //WorkPlace
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 7;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(7),
                                     child: SidebarItem(
                                       icon: Icons.workspaces_filled,
                                       text: "Workplace",
-                                      isSelected: selcetdSidebarItem == 7,
+                                      isSelected: providerRead.selcetdSidebarItem == 7,
                                     ),
                                   ),
 
                                   //More _side bar
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 8;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(8),
                                     child: SidebarItem(
                                       icon: Icons.more,
                                       text: "More",
-                                      isSelected: selcetdSidebarItem == 8,
+                                      isSelected: providerRead.selcetdSidebarItem == 8,
                                     ),
                                   ),
 
@@ -176,29 +143,21 @@ class _SidebarSectionState extends State<SidebarSection> {
 
                                   //Aproval
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 9;
-                                      });
-                                    },
+                                    onTap: ()=>providerRead.upDateSelcetdSidebarItem(9),
                                     child: SidebarItem(
                                       icon: Icons.auto_graph_outlined,
                                       text: "Approval",
-                                      isSelected: selcetdSidebarItem == 9,
+                                      isSelected: providerRead.selcetdSidebarItem == 9,
                                     ),
                                   ),
 
                                   //Settings..
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 10;
-                                      });
-                                    },
+                                    onTap: () =>providerRead.upDateSelcetdSidebarItem(10),
                                     child: SidebarItem(
                                       icon: Icons.settings,
                                       text: "Settings",
-                                      isSelected: selcetdSidebarItem == 10,
+                                      isSelected: providerRead.selcetdSidebarItem == 10,
                                     ),
                                   ),
                                   Container(
@@ -208,14 +167,10 @@ class _SidebarSectionState extends State<SidebarSection> {
                                   ),
                                   //  download
                                   InkWell(
-                                    onTap: () {
-                                      setState(() {
-                                        selcetdSidebarItem = 11;
-                                      });
-                                    },
+                                    onTap: () =>providerRead.upDateSelcetdSidebarItem(11),
                                     child: SidebarItem(
                                       icon: Icons.download,
-                                      isSelected: selcetdSidebarItem == 11,
+                                      isSelected: providerRead.selcetdSidebarItem == 11,
                                     ),
                                   ),
                                 ],
